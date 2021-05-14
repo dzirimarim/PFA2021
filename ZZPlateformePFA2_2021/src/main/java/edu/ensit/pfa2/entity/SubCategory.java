@@ -12,9 +12,10 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+
 
 @Entity
-@Table(name = "SubCategory")
 public class SubCategory {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

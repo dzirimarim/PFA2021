@@ -1,6 +1,7 @@
 package edu.ensit.pfa2.entity;
 
 import java.sql.Date;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -14,15 +15,15 @@ import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.Table;
 
 import org.hibernate.annotations.NaturalId;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import javassist.bytecode.Descriptor.Iterator;
+
 @Entity
-@Table(name = "userA")
 @Inheritance(strategy = InheritanceType.JOINED)
 public class UserEnt {
 	@Id
@@ -41,10 +42,11 @@ public class UserEnt {
 
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "userRoles", joinColumns = @JoinColumn(name = "userId"), inverseJoinColumns = @JoinColumn(name = "roleId"))
-	private Set<Role> roles = new HashSet<>();
+	private Set<UserRole> roles = new HashSet<>();
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
 	private Date dateOfBirth;
-	public UserEnt(Long id, String name, String username, String email, String password, String address, int phone, Set<Role> roles, Date dateOfBirth) {
+	public UserEnt(String name, String username, String email, String password, 
+			String address, int phone, Set<UserRole> roles, Date dateOfBirth) {
 		super();
 		this.name = name;
 		this.username = username;
@@ -52,14 +54,28 @@ public class UserEnt {
 		this.password = password;
 		this.address = address;
 		this.phone = phone;
-		this.isActivated = true;
+		this.isActivated = false;
 		this.roles = roles;
 		this.dateOfBirth = dateOfBirth;
 	}
-	public UserEnt() {
-		//super();
-		// TODO Auto-generated constructor stub
+	
+	public UserEnt(String name, String username, String email, String password, String address, Date dateOfBirth) {
+		this(name, username,email,password,address,false,dateOfBirth);
 	}
+	
+	public UserEnt() {
+	}
+	
+	public UserEnt(String name, String username, String email, String pwd) {
+		// haaa nendebhom hedhi mahich implemented ya bnaya rakkez :p 
+		this(name, username, email, pwd, null, null);
+	}
+
+	public UserEnt( String name, String username, String email, String password, String address, 
+			boolean isActivated, Date dateOfBirth) {
+		this(name, username, email, password, address, 0, Collections.EMPTY_SET, dateOfBirth);
+	}
+
 	public String getName() {
 		return name;
 	}
@@ -102,10 +118,10 @@ public class UserEnt {
 	public void setActivated(boolean isActivated) {
 		this.isActivated = isActivated;
 	}
-	public Set<Role> getRoles() {
+	public Set<UserRole> getRoles() {
 		return roles;
 	}
-	public void setRoles(Set<Role> roles) {
+	public void setRoles(Set<UserRole> roles) {
 		this.roles = roles;
 	}
 	public Date getDateOfBirth() {
@@ -113,6 +129,16 @@ public class UserEnt {
 	}
 	public void setDateOfBirth(Date dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
+	}
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
+	public String  getRole( ) {
+		java.util.Iterator<UserRole> iter = roles.iterator();
+        return iter.next().toString();
 	}
 	
 	

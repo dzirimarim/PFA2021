@@ -12,10 +12,13 @@ import edu.ensit.pfa2.entity.Test;
 import edu.ensit.pfa2.entity.UserEnt;
 
 
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+@EnableJpaRepositories
 @Repository
-public interface CandidatTestRepo   extends CrudRepository<CandidatTest,Long>{
-	boolean existsByCandidateAndNxT(Candidat candidat ,Test test);
-	boolean existsByCandidateAndSubCategory(Candidat candidat,SubCategory subCategory);
-	boolean existsByCandidateAndContestId(Candidat candidat,long contestId);
+public interface CandidatTestRepo extends CrudRepository<CandidatTest,Long>{
+	boolean existsByCandidatAndTest(Candidat candidat ,Test test);
+	boolean existsByCandidatAndSubCategory(Candidat candidat,SubCategory subCategory);
+	boolean existsByCandidatAndContestId(Candidat candidat,long contestId);
 	Optional<CandidatTest> findByCandidatAndContestId(Candidat candidat,long contestId);
 }

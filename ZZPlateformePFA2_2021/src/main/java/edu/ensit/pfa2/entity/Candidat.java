@@ -15,12 +15,22 @@ import javax.persistence.OneToMany;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name = "candidat")
 @PrimaryKeyJoinColumn(name = "id")
 public class Candidat extends UserEnt {
+	public Candidat() {
+		// TODO Auto-generated constructor stub
+	}
+	public Candidat(String name, String username, String email, String password, String address, Date dateOfBirth) {
+		super( name, username, email, password, address,dateOfBirth);
+		// TODO Auto-generated constructor stub
+	}
+	
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -32,24 +42,7 @@ public class Candidat extends UserEnt {
 	private List<CandidatTest> candidatTest;
 	@ManyToMany
 	private Set<Topic> Topics;
-	public Candidat(Long id, String name, String username, String email, String password, String address, int phone,
-			Set<Role> roles, Date dateOfBirth, int teamId, int uid, List<CandidatTest> candidatTest,
-			Set<Topic> topics) {
-		super(id, name, username, email, password, address, phone, roles, dateOfBirth);
-		this.teamId = teamId;
-		this.uid = uid;
-		this.candidatTest = candidatTest;
-		Topics = topics;
-	}
-	public Candidat() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-	public Candidat(Long id, String name, String username, String email, String password, String address, int phone,
-			Set<Role> roles, Date dateOfBirth) {
-		super(id, name, username, email, password, address, phone, roles, dateOfBirth);
-		// TODO Auto-generated constructor stub
-	}
+	
 	public Long getId() {
 		return id;
 	}

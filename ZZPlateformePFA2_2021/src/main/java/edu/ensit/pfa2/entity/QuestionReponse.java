@@ -13,10 +13,10 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 @Entity
-@Table(name = "questionReponse")
 public class QuestionReponse {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,9 +24,9 @@ public class QuestionReponse {
 	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private ReponseResult TResponse;
 	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	private Question TQuestion;
-	@OneToMany(mappedBy = "TQuestionResponse", cascade = CascadeType.ALL)
-	private List<PropositionReponse> TPropositionResponses;
+	private Question tQuestion;
+	@OneToMany(mappedBy = "id", cascade = CascadeType.ALL)
+	private List<PropositionReponse> PropositionResponses;
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss a z", timezone = "GMT+1")
 	private Date submitDate = new Date();
 	private Double questionScore;
@@ -42,17 +42,17 @@ public class QuestionReponse {
 	public void setTResponse(ReponseResult tResponse) {
 		TResponse = tResponse;
 	}
-	public Question getTQuestion() {
-		return TQuestion;
+	public Question gettQuestion() {
+		return tQuestion;
 	}
-	public void setTQuestion(Question tQuestion) {
-		TQuestion = tQuestion;
+	public void settQuestion(Question tQuestion) {
+		tQuestion = tQuestion;
 	}
 	public List<PropositionReponse> getTPropositionResponses() {
-		return TPropositionResponses;
+		return PropositionResponses;
 	}
 	public void setTPropositionResponses(List<PropositionReponse> tPropositionResponses) {
-		TPropositionResponses = tPropositionResponses;
+		PropositionResponses = tPropositionResponses;
 	}
 	public Date getSubmitDate() {
 		return submitDate;

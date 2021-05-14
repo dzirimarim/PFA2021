@@ -15,18 +15,19 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 
 @Entity
-@Table(name = "Test")
 public class Test {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String title;
 	@ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
-	@JoinTable(name = "Tquestion", joinColumns = @JoinColumn(name = "id"), inverseJoinColumns = @JoinColumn(name = "question_id"))
+	@JoinTable(name = "tQuestion", joinColumns = @JoinColumn(name = "id"), inverseJoinColumns = @JoinColumn(name = "question_id"))
 	@JsonIgnoreProperties("tests")
 	private Set<Question> questions;
 	private String description;
@@ -63,6 +64,12 @@ public class Test {
 	}
 	public void setAutheurs(List<UserEnt> autheurs) {
 		this.autheurs = autheurs;
+	}
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	

@@ -14,10 +14,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
-@Table(name = "question")
 public class Question implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,7 +36,7 @@ public class Question implements Serializable {
 	@JsonIgnoreProperties("question")
 	private List<Proposition> propositions;
 
-	public boolean addNxT(Test test) {
+	public boolean addTest(Test test) {
 		return tests.add(test);
 	}
 

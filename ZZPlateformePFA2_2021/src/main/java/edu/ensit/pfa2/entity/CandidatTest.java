@@ -11,11 +11,13 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-@Entity
-@Table(name = "candidat_test")
-public class CandidatTest {
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+@Entity
+public class CandidatTest {
+    
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -82,6 +84,11 @@ public class CandidatTest {
 	public void setAuthor(UserEnt author) {
 		this.author = author;
 	}
+	
+	public CandidatTest() {
+		
+	}
+	
 	public CandidatTest(ReponseResult responseResult, Candidat candidat, Test test, long contestId,
 			SubCategory subCategory, int maxQuestion, UserEnt author) {
 		super();

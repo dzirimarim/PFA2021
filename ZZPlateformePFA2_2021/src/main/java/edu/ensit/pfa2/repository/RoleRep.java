@@ -6,11 +6,14 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import edu.ensit.pfa2.entity.RoleName;
-import edu.ensit.pfa2.entity.Role;
+import edu.ensit.pfa2.entity.UserRole;
 
 
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+@EnableJpaRepositories
 @Repository
-public interface RoleRep  extends CrudRepository<Role,Long>{
-    Optional<Role> findByRoleName(RoleName roleName);
+public interface RoleRep  extends CrudRepository<UserRole,Long>{
+    Optional<UserRole> findByRoleName(RoleName roleName);
 
 }

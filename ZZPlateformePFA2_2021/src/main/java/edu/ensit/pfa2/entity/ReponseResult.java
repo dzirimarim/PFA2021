@@ -15,12 +15,11 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-
 @Entity
-@Table(name = "reponseResult")
 public class ReponseResult {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

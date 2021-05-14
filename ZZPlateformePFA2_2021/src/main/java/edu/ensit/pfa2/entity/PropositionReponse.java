@@ -10,8 +10,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-@Entity 
-@Table(name = "propositionReponse")
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+
+@Entity
 public class PropositionReponse {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

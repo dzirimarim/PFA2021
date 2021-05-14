@@ -10,8 +10,9 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+
 @Entity
-@Table(name = "submission")
 public class Submission {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -43,7 +44,7 @@ public class Submission {
 		this.problemId = problemId;
 	}
 
-	public CandidatTest getCandidateNxT() {
+	public CandidatTest getCandidat() {
 		return candidatTest;
 	}
 

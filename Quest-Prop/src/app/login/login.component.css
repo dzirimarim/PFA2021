@@ -1,0 +1,70 @@
+.bodyImage{
+    background-image: url('./bg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+}
+#login-name{
+font-size: 65px;
+font-family: arabic typesetting;
+border-bottom-style: ridge;
+color:white;
+}
+.btn-success{
+    color: #04B4AE;
+}
+#login{
+background-color:rgba(13,13,13,0.2);
+min-height:500px;
+padding: 40px 80px 40px 80px;
+box-shadow: -10px -10px 10px #04B4AE;
+
+}
+.user{
+font-size: 29px;
+
+font-family: arabic typesetting;
+
+color: white;
+
+
+}
+
+#iconn{
+
+background-color: #04B4AE;
+border-color: #04B4AE;
+color: white;
+
+}
+#iconn1{
+
+background-color: #04B4AE;
+border-color: #04B4AE;
+color: white;
+
+}
+
+#text1{
+
+	border-radius: 0;
+	height: 40px;
+}
+#text2{
+
+	border-radius: 0;
+	height: 40px;
+}
+
+.btn{
+	width: 50%;
+	float: left;
+	height: 40px;
+	font-size: 18px;
+}
+.container{
+    height: 100%;
+    align-content: center;
+    padding-bottom: 10%;
+    }

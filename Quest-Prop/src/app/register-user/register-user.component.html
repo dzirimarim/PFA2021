@@ -1,0 +1,153 @@
+<div >
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<div class="bodyImage">
+    <div class="container">
+        <br />
+
+        <b id="login-name">Create acount</b>
+
+        <div class="row">
+
+            <div class="col-md-6 col-md-offset-3" id="login">
+
+                <form (submit)="f.form.valid &&signUpUser(f)" #f="ngForm" novalidate>
+                    <div class="form-group">
+                        <div class="form-group">
+                            <label class="user" for="name">Name: </label><br>
+
+                            <div class="input-group">
+                                <span class="input-group-addon" id="iconn"> <i
+                                        class="glyphicon glyphicon-user"></i></span>
+                                <input type="text" class="form-control" required name="name" #name="ngModel"
+                                    [ngClass]="{ 'is-invalid': f.submitted && name.invalid }" ngModel>
+                                <div *ngIf="f.submitted && name.invalid" class="invalid-feedback">
+                                    <div *ngIf="name.errors.required">Name is required</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="user" for="name">Username: </label><br>
+
+                            <div class="input-group">
+                                <span class="input-group-addon" id="iconn"> <i
+                                        class="glyphicon glyphicon-user"></i></span>
+                                <input type="text" class="form-control" required name="username" #username="ngModel"
+                                    [ngClass]="{ 'is-invalid': f.submitted && username.invalid }" ngModel>
+                                <div *ngIf="f.submitted && name.invalid" class="invalid-feedback">
+                                    <div *ngIf="name.errors.required">Username is required</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="user" for="dateOfBirth">Date of birth: </label><br>
+
+                            <div class="input-group">
+                                <span class="input-group-addon" id="iconn"> <i
+                                        class="glyphicon glyphicon-calendar"></i></span>
+                                <input type="date" class="form-control" required name="dateOfBirth"
+                                    #dateOfBirth="ngModel" [ngClass]="{ 'is-invalid': f.submitted && name.invalid }"
+                                    ngModel>
+                                <div *ngIf="f.submitted && dateOfBirth.invalid" class="invalid-feedback">
+                                    <div *ngIf="name.errors.required">Name is required</div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+                            <label class="user" for=" email">
+                                Email: </label><br>
+                            <div class="input-group">
+                                <span class="input-group-addon" id="iconn"> <i
+                                        class="glyphicon glyphicon-envelope"></i></span>
+                                <input type="email" class="form-control" name="email" ngModel required email
+                                    #email="ngModel" [ngClass]="{ 'is-invalid': f.submitted && email.invalid }">
+                                <div *ngIf="f.submitted && email.invalid" class="invalid-feedback">
+                                    <div *ngIf="email.errors.required">Email is required</div>
+                                    <div *ngIf="email.errors.email">Email must be a valid email address</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="user" for="name">Adress: </label><br>
+
+                            <div class="input-group">
+                                <span class="input-group-addon" id="iconn"> <i
+                                        class="glyphicon glyphicon-map-marker"></i></span>
+                                <input type="text" class="form-control" required name="adress" #adress="ngModel"
+                                    [ngClass]="{ 'is-invalid': f.submitted && adress.invalid }" ngModel>
+                                <div *ngIf="f.submitted && name.invalid" class="invalid-feedback">
+                                    <div *ngIf="name.errors.required">address is required</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="user" for="password" id="txtNewPassword">Password: </label><br>
+                            <div class="input-group">
+                                <span class="input-group-addon" id="iconn1"> <i
+                                        class="glyphicon glyphicon-lock"></i></span>
+                                <input type="password" class="form-control" required minlength="6" name="password"
+                                    ngModel #password="ngModel"
+                                    [ngClass]="{ 'is-invalid': f.submitted && password.invalid }">
+                                <div *ngIf="f.submitted && password.invalid" class="invalid-feedback">
+                                    <div *ngIf="password.errors.required">Password is required</div>
+                                    <div *ngIf="password.errors.minlength">Password must be at least 6 characters</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="user" for="passwordVerification" minLength='5' id="txtConfirmPassword"
+                                onchange="checkPasswordMatch();">Password verification: </label><br>
+
+                            <div id="divCheckPasswordMatch"></div>
+
+
+                            <div class="input-group">
+                                <span class="input-group-addon" id="iconn1"> <i
+                                        class="glyphicon glyphicon-lock"></i></span>
+                                <input type="password" class="form-control" name="passwordVerification" ngModel
+                                    #pwConfirm="ngModel" compare="password"
+                                    [ngClass]="{ 'is-invalid': f.submitted && pwConfirm.invalid }" required>
+                                <div class="text-danger"
+                                    *ngIf="pwConfirm.invalid && (pwConfirm.dirty || pwConfirm.touched)">
+                                    <div *ngIf="pwConfirm.errors['compare']">Password confirm do not match
+                                    </div>
+                                    <div *ngIf="pwConfirm.errors['required']">Password confirm is required</div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <input type="submit" value="Create" class="btn float-right btn-info "
+                            style="color: white; font-size: 15px; float: right; margin-right: 10px;"
+                            [disabled]="!f.form.valid">
+                        <a routerLink='../login'
+                            style="color: #04B4AE; font-size: 15px; float: right; margin-right: 10px;">Login</a>
+                    </div>
+
+                </form>
+                <div class="row"  *ngIf='showMessage'>
+                        <div class="col-xs-12">
+                                <p class="alert alert-danger" *ngIf="message==='Error'">
+                                        <strong>Username or email are already used</strong> 
+                              
+                                    </p>
+                                    <p class="alert alert-success" *ngIf="message!='Error'">
+                                            <strong>{{message}}</strong> 
+                                  
+                                    </p>
+                        </div>
+                      </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+ </div>
+<!--<div *ngIf="registred">
+</div>-->

@@ -1,0 +1,76 @@
+<div class="row">
+    <div class="col-md-5">
+      <mat-card>
+        <mat-card-header style="background-color:azure!important;
+        color: #2980b9;
+        padding:9px !important;" >
+            Questions
+        </mat-card-header>
+        <mat-card-content>
+          <div class="row example-header">
+
+            <mat-chip-list aria-label="Fish selection" class="ml-auto">
+              <mat-chip mat-icon style="color: #2980b9; background-color: azure;" (click)="addQuestion()" selected>
+                <mat-icon>add</mat-icon>
+              </mat-chip>
+            </mat-chip-list>
+          </div>
+          <mat-table [dataSource]="dataSource" matSort class="exemple-conteneur mat-elevation-z8">
+  
+            <ng-container matColumnDef="id">
+              <mat-header-cell *matHeaderCellDef mat-sort-header> Id  </mat-header-cell>>
+              <mat-cell *matCellDef="let element "> {{element.id}} </mat-cell>
+            </ng-container>
+  
+            <ng-container class="bord" matColumnDef="title">
+              <mat-header-cell *matHeaderCellDef mat-sort-header> title of question </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.title}} </mat-cell>
+            </ng-container>
+  
+            <ng-container matColumnDef="category">
+              <mat-header-cell *matHeaderCellDef> Category </mat-header-cell>
+              <mat-cell *matCellDef="let element" >
+                {{loaded?.title}}
+              </mat-cell>
+  
+            </ng-container>
+  
+            <ng-container matColumnDef="level">
+              <mat-header-cell *matHeaderCellDef mat-sort-header> Level </mat-header-cell>
+              <mat-cell *matCellDef="let element "> {{element.level}} </mat-cell>
+            </ng-container>
+  
+            <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+            <mat-row *matRowDef="let row ; columns: displayedColumns; " (click)="selectQuestion(row)"></mat-row>
+          </mat-table>
+          <mat-paginator [pageSizeOptions]="[4,8,12,16,20,24,28]"></mat-paginator>
+  
+        </mat-card-content>
+        <div class="row" style="padding: 10px">
+          <div class=' mr-auto'>
+            <mat-chip style="margin:15px; color: #2980b9; background-color: azure; " (click)="Update()">
+              <mat-icon>update</mat-icon>
+            </mat-chip>
+
+          </div>
+        </div>
+      </mat-card>
+    </div>
+    <div class="col-md-7 ml-auto">
+     <!----> <app-edit-questions [question]="question" [isAdmin]="true" *ngIf="question && !create">
+      </app-edit-questions>
+      
+      <mat-card *ngIf="!question || create">
+            <app-questions-add>
+            </app-questions-add>
+        </mat-card>
+    </div>
+  </div>
+  <br>
+  <mat-card *ngIf="!create">
+      <mat-card-content>
+        <app-questions-add >
+        </app-questions-add>
+      </mat-card-content>
+    </mat-card>
+  

@@ -1,0 +1,65 @@
+.btn-primary{
+    background-color:rgb(233, 205, 127);
+    border-color: transparent;
+    margin-left: 10px;
+} 
+
+.btn-danger{
+    background-color:azure;
+    border-color: transparent;
+    margin: 10px;
+    align-self:inherit flex-end;
+    align-items: inherit flex-end;
+    -webkit-box-align: end;   
+}  
+
+.icon {
+    font-size: 15px;
+    
+}
+.btn-success{
+    background-color:rgb(233, 205, 127);
+    border-color: transparent;
+    margin-left: 10px;
+}
+.form-inline .btn{
+    border-radius: 30%;
+    size: 10px;
+}
+.mystyle{
+    background-color: azure;
+    margin: 10px;
+}
+.style{
+    background: #000;
+}
+.example-panel-red.mat-select-panel {
+    background: rgba(255, 0, 0, 0.5);
+  }
+  
+  .example-panel-green.mat-select-panel {
+    background: rgba(0, 255, 0, 0.5);
+  }
+  
+  .example-panel-blue .mat-select-panel {
+    background-color: rgba(0, 255, 213, 0.61);
+  }
+  .mat-icon-resize{
+    height:15px !important;
+    width:15px !important;
+    font-size:20px !important;
+    color: crimson !important;
+    line-height: initial !important;
+}
+  
+  ::ng-deep .mat-card{
+    padding:0px !important;
+    
+  }
+  
+  ::ng-deep .mat-card-content{
+    padding:15px !important;
+    margin: 15px !important;
+     
+  }
+  

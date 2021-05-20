@@ -1,0 +1,93 @@
+.btn-primary{
+    background-color:rgb(3, 224, 187);
+    border-color: transparent;
+} 
+.btn-danger{
+    background-color:rgb(128, 128, 128);
+    border-color: transparent;
+}  
+.btn-success{
+    background-color:rgb(9, 194, 185);
+    border-color: transparent;
+}
+.btn-primary{
+    background-color:rgb(3, 224, 187);
+    border-color: transparent;
+    box-shadow:-5px -2px 5px #000000;
+    margin-left: 10px;
+} 
+
+.btn-danger{
+    background-color:rgb(94, 94, 94);
+    border-color: transparent;
+    box-shadow:-5px -2px 5px #000000;
+    margin: 10px;
+    align-self:inherit flex-end;
+    align-items: inherit flex-end;
+    -webkit-box-align: end;
+    
+
+    
+}  
+
+.icon {
+    font-size: 15px;
+    
+}
+/*
+.form-check .icon {
+    color:rgb(94, 94, 94);
+    background: aliceblue
+}*/
+.btn-success{
+    background-color:rgb(9, 194, 185);
+    border-color: transparent;
+    box-shadow:-5px -2px 5px #000000;
+    margin-left: 10px;
+}
+.form-inline .btn{
+    border-radius: 30%;
+    size: 10px;
+    line-height: initial !important;
+}
+.mystyle{
+    background-color: rgb(169, 183, 189);
+    margin: 10px;
+}
+.style{
+    background: #000;
+}
+.example-panel-red.mat-select-panel {
+    background: rgba(255, 0, 0, 0.5);
+  }
+  
+  .example-panel-green.mat-select-panel {
+    background: rgba(0, 255, 0, 0.5);
+  }
+  
+  .example-panel-blue .mat-select-panel {
+    background-color: rgba(0, 255, 213, 0.61);
+  }
+  .mat-icon-resize{
+    height:10px !important;
+    width:10px !important;
+    font-size:20px !important;
+    color: crimson !important;
+    line-height: initial !important;
+}
+::ng-deep .mat-card-header{
+    background-color:black !important;
+    color: white;
+    padding:5px !important;
+  }
+  
+  ::ng-deep .mat-card{
+    padding:0px !important;
+    
+  }
+  
+  ::ng-deep .mat-card-content{
+    padding:15px !important;
+    margin: 15px !important;
+     
+  }

@@ -1,0 +1,52 @@
+::ng-deep .mat-card{
+    padding:0px !important;
+  }
+  
+  ::ng-deep .mat-card-content{
+    padding:15px !important;
+  }
+  .divstyle{
+    margin-left: 15px;
+  }
+  table {
+    width: 100%;
+  }
+  .example-header {
+    padding: 15px;
+  }
+  .example-container {
+    height : 400px ;
+    overflow : auto;
+    background-color: wheat;
+ }
+
+
+.mat-header-cell:first-child,.mat-cell:first-child{
+  flex:10%;
+}
+.mat-header-cell:nth-child(2),.mat-cell:nth-child(2){
+  flex:60%;
+}
+.mat-header-cell:nth-child(3),.mat-cell:nth-child(3){
+  flex:20%;
+}
+.mat-header-cell:last-child,.mat-cell:last-child{
+  flex:10%
+}
+.btn-primary{
+  background-color:rgb(9, 194, 185);
+   border-color: transparent;
+   box-shadow:-5px -2px 5px #000000;
+   margin-left: 10px;
+  }
+  ::ng-deep .mat-card-header{
+    background-color:black !important;
+    color: white;
+    padding:0px !important;
+    top: 0px;
+
+  }
+  .mat-row:nth-child(even){
+    background-color: rgb(246, 246, 246) ;
+}
+        

@@ -1,0 +1,30 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+
+@import "~bootstrap/scss/bootstrap-reboot";
+@import "~bootstrap/scss/bootstrap-grid";
+
+html,
+body {
+  height: 100%;
+  background-color: #f3f7f6;
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+  
+
+.mat-raised-buttonx {
+  color: #07180a;
+  background-color: #1397d4;
+  width: 200px;
+  height: 60px;
+  border-radius: 11%;
+  font-size: 20px;
+  text-align: center;
+}
+.mat-buttonx {
+  background-color: #f3f7f6;
+  margin-right: 10%;
+  color: #07180a;
+}
+

@@ -1,0 +1,70 @@
+<div class="ng-container">
+      <mat-card>
+        <mat-card-header style="background-color:  rgb(117, 2, 41)!important; color: wheat;
+        padding:9px !important;" >
+            Questions
+        </mat-card-header>
+        <mat-card-content>
+          <div class="row example-header">
+
+            <mat-chip-list aria-label="Fish selection" class="ml-auto">
+              <mat-chip mat-icon style="background-color:  rgb(117, 2, 41)!important; color: wheat;" (click)="addQuestion()" selected>
+                <mat-icon>add</mat-icon>
+              </mat-chip>
+            </mat-chip-list>
+          </div>
+          <mat-table  [dataSource]="dataSource" matSort class="exemple-conteneur mat-elevation-z8" >
+  
+            <ng-container matColumnDef="id">
+              <mat-header-cell *matHeaderCellDef mat-sort-header> Id  </mat-header-cell>>
+              <mat-cell *matCellDef="let quest "> {{quest.id}} </mat-cell>
+            </ng-container>
+  
+            <ng-container class="bord" matColumnDef="title">
+              <mat-header-cell *matHeaderCellDef mat-sort-header> Titre de la question  </mat-header-cell>
+              <mat-cell *matCellDef="let quest"> {{quest.title}} </mat-cell>
+            </ng-container>
+  
+            <ng-container matColumnDef="category">
+              <mat-header-cell *matHeaderCellDef> Catégorie </mat-header-cell>
+              <mat-cell *matCellDef="let quest" >
+                {{loaded?.title}}
+              </mat-cell>
+  
+            </ng-container>
+  
+            <ng-container matColumnDef="level">
+              <mat-header-cell *matHeaderCellDef mat-sort-header> Niveau </mat-header-cell>
+              <mat-cell *matCellDef="let quest "> {{quest.level}} </mat-cell>
+            </ng-container>
+  
+            <mat-row *matRowDef="let row ; columns: displayedColumns; " (click)="selectQuestion(row)"></mat-row>
+          </mat-table>
+          <!--<mat-paginator [pageSizeOptions]="[4,8,12,16,20,24,28]"></mat-paginator>-->
+          <mat-paginator [length]="length"
+          [pageSize]="pageSize"
+          [pageSizeOptions]="pageSizeOptions"
+          (page)="pageEvent = $event">
+</mat-paginator>
+
+<div *ngIf="pageEvent">
+<h5>Page Change Event Properties</h5>
+<div>List length: {{pageEvent.length}}</div>
+<div>Page size: {{pageEvent.pageSize}}</div>
+<div>Page index: {{pageEvent.pageIndex}}</div>
+</div>
+
+        </mat-card-content>
+        <div class="row" style="padding: 10px">
+          <div class=' mr-auto'>
+            <mat-chip style="margin:15px; background-color:  rgb(117, 2, 41)!important; color: wheat; " (click)="Update()">
+              <mat-icon>update</mat-icon>
+            </mat-chip>
+
+          </div>
+        </div>
+      </mat-card>
+    </div>
+
+  <br>
+  

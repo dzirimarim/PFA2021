@@ -1,0 +1,12 @@
+<div [ngClass]="trans ? 'primary-tr':'primary-blue'">
+    <mat-toolbar color="primary">
+      <mat-toolbar-row>
+        <span>
+          <img src="../assets/images/logo.png" width="90" height="50" alt="" routerLink = "/"/>
+        </span>
+        <span class="example-spacer"></span>
+        <button mat-button color="accent"  (click)="openDialog('true')">Se connecter</button>
+        <button mat-button color="primary" (click)="openDialog('false')">S'inscrire</button>
+      </mat-toolbar-row>
+    </mat-toolbar>
+  </div>

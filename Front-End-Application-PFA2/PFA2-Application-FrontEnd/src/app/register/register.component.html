@@ -1,0 +1,107 @@
+<div class="container">
+    <div class="row mt-5 align-items-center">
+
+        <mat-form-field appearance="outline" class="full-width-input">
+            <mat-label>Username</mat-label>
+            <input matInput placeholder="username" [formControl]="username" required>
+            <mat-icon matSuffix>person</mat-icon>
+            <mat-error *ngIf="username.hasError('required')">
+                Username is <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+
+    </div>
+<div class="row mt-5 align-items-center">
+    <mat-form-field appearance="outline" class="full-width-input">
+        <mat-label>Date of birth: </mat-label>
+        <input matInput [matDatepicker]="picker" [formControl]="date" required name="date" >
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+
+            <mat-error *ngIf="date.hasError('required')">
+                date is <strong>required</strong>
+            </mat-error>
+        </mat-form-field>    
+</div>
+<div class="row mt-5 align-items-center">
+    <mat-form-field appearance="outline" class="full-width-input">
+        <mat-label>Name: </mat-label>
+            <input matInput placeholder="name" [formControl]="name" required>
+            <mat-icon matSuffix>account_box</mat-icon>
+            <mat-error *ngIf="name.hasError('required')">
+                name is <strong>required</strong>
+            </mat-error>
+        </mat-form-field>    
+</div>
+<div class="row mt-5 align-items-center">
+    <mat-form-field appearance="outline" class="full-width-input">
+        <mat-label>Email: </mat-label>
+            <input matInput placeholder="email" [formControl]="email" required>
+            <mat-icon matSuffix>email</mat-icon>
+            <mat-error *ngIf="email.hasError('required')">
+                Email is <strong>required</strong>
+            </mat-error>
+        </mat-form-field>    
+</div>
+
+<div class="row mt-5 align-items-center">
+    <mat-form-field appearance="outline" class="full-width-input">
+        <mat-label>Address: </mat-label>
+            <input matInput placeholder="address" [formControl]="address" required>
+            <mat-icon matSuffix>location_on</mat-icon>
+            <mat-error *ngIf="address.hasError('required')">
+                Address is <strong>required</strong>
+            </mat-error>
+        </mat-form-field>    
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="row mt-4 align-items-center">
+        <mat-form-field appearance="outline" class="full-width-input">
+            <mat-label>Enter your password</mat-label>
+            <input matInput [type]="hide ? 'password' : 'text'" [formControl]="password" required>
+            <button mat-icon-button matSuffix (click)="toggleHide()" [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+            <mat-error *ngIf="password.hasError('required')">
+                Password is <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+    </div>
+    <div class="row mt-4 align-items-center">
+        <mat-form-field appearance="outline" class="full-width-input">
+            <mat-label>Enter your password</mat-label>
+            <input matInput [type]="hide1 ? 'password' : 'text'" [formControl]="password1" required>
+            <button mat-icon-button matSuffix (click)="toggleHide1()" [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide">
+                <mat-icon>{{hide1 ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+            <mat-error *ngIf="password.hasError('required')">
+                Password is <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+    </div>
+    <div class="row mt-2">
+        <div class="col ">
+          If already has an acount please <a (click) = "login()" routerLink>sign-in</a>
+        </div>
+        <div class="col-4">
+            <button mat-raised-button color = "primary" (click)="submit()" [disabled]="!password.valid || !username.valid"
+                class="md-auto">Signup</button>
+        </div>
+    </div>
+</div>

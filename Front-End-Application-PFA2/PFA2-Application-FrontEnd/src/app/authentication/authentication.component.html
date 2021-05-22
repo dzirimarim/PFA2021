@@ -1,0 +1,7 @@
+<h1 mat-dialog-title class="card-container">
+    {{isLogin ? 'Signin' : 'Signup'}}
+</h1>
+<mat-dialog-content>
+    <app-register (toLogin) = "onChangeRequest($event)" *ngIf="!isLogin"></app-register>
+    <app-login (toLogin) = "onChangeRequest($event)" *ngIf="isLogin"></app-login>
+</mat-dialog-content>

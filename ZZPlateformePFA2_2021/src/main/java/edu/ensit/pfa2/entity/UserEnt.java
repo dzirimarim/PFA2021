@@ -73,7 +73,7 @@ public class UserEnt {
 
 	public UserEnt( String name, String username, String email, String password, String address, 
 			boolean isActivated, Date dateOfBirth) {
-		this(name, username, email, password, address, 0, Collections.EMPTY_SET, dateOfBirth);
+		this(name, username, email, password, address, 1, Collections.EMPTY_SET, dateOfBirth);
 	}
 
 	public String getName() {

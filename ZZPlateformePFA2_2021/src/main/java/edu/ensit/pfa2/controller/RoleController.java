@@ -13,7 +13,7 @@ import edu.ensit.pfa2.service.RoleService;
 
 @CrossOrigin(origins = "http://localhost:4200" , maxAge = 3600)
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/api/public")
 public class RoleController {
 	
 	@Autowired

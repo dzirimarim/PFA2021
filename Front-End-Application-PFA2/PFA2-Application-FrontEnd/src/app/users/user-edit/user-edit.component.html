@@ -1,0 +1,161 @@
+<!--pre>{{user | json}}</pre-->
+
+<mat-card *ngIf="user">
+    <mat-card-header>
+        <div class="row form-inline">
+           <div class = " col-md-2 ml-auto">
+
+            <button mat-icon-button (click)="reset()">
+                <mat-icon >clear</mat-icon>
+            </button>
+
+           </div>
+           <div class = " col-md-10 ml-auto">
+                <span *ngIf="!modifie">Detail : {{user.name}}</span>
+            <span *ngIf="modifie">Modifie  : {{user.name}}</span>
+           </div>
+           
+
+           
+        </div>
+    </mat-card-header>
+
+
+    <mat-card-content *ngIf="user">
+        <div class="row" style="padding: 20px">
+            <div class="col-md-4">
+                <label for="username" class="form-inline">
+                    <h5 id='username' style="margin-left: 5px;text-justify: auto;font-size: 18px">Username : </h5>
+                    <h6 style="margin-left: 5px;text-justify: auto;font-size: 12px" *ngIf="!modifie">{{user.username}}
+                    </h6>
+                    <input type="text" class="form-control example-chip-list" id="username" placeholder="username"
+                        name="time" style="margin-right:5px;" *ngIf="modifie && isAdmin" required
+                        [(ngModel)]="user.username">
+                </label>
+            </div>
+            <div class="col-md-4">
+                <label for="name" class="form-inline">
+                    <h5 id='name' style="margin-left: 5px;text-justify: auto;font-size: 18px">Name : </h5>
+                    <h6 style="margin-left: 5px;text-justify: auto;font-size: 12px" *ngIf="!modifie">{{user.name}}</h6>
+                    <input type="text" class="form-control example-chip-list" id="username" placeholder="username"
+                        name="time" style="margin-right:5px;" *ngIf="modifie" [(ngModel)]="user.name" required>
+                </label>
+            </div>
+            <!-- <div class="col-md-4">
+          <label for="enabled" class="form-inline">
+            <h5 id='enabled' style="margin-left: 5px;text-justify: auto;font-size: 18px">Enabled : </h5>
+            <h6 style="margin-left: 15px;text-justify: auto;  font-weight: 900; font-size: 14px" *ngIf="!modifie">{{user.activated}}</h6>
+            <mat-slide-toggle [color]="accent" style="margin-left: 15px;text-justify: auto;font-size: 12px;font: outline;" *ngIf="modifie" [(ngModel)]="user.activated"></mat-slide-toggle>
+          </label>
+        </div>-->
+        </div>
+        <div class="row" style="padding: 20px">
+            <div class="col-md-4">
+                <label for="Date of birth" class="form-inline" *ngIf="!modifie">
+                    <h5 id='Date of birth' style="margin-left: 5px;text-justify: auto;font-size: 18px">Date of birth :
+                    </h5>
+                    <h6 style="margin-left: 5px;text-justify: auto;font-size: 12px">{{user.dateOfBirth}}</h6>
+                </label>
+                <h5 id='Date of birth' style="margin-left: 5px;text-justify: auto;font-size: 18px;margin-bottom:0px;"
+                    *ngIf="modifie">Date of birth : </h5>
+                <mat-form-field class="example-full-width" *ngIf="modifie">
+                    <input matInput class="form-control" [matDatepicker]="picker" placeholder="Date of birth"
+                        [(ngModel)]="dateOfBirth" (dateChange)="dateChange('change', $event)">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+            </div>
+            <div class="col-md-4">
+                <label for="Adress" class="form-inline">
+                    <h5 id='Adress' style="margin-left: 5px;text-justify: auto;font-size: 18px">Adress : </h5>
+                    <h6 style="margin-left: 5px;text-justify: auto;font-size: 12px" *ngIf="!modifie">{{user.address}}
+                    </h6>
+                    <input type="text" class="form-control example-chip-list" id="username" placeholder="username"
+                        name="time" style="margin-right:5px;" *ngIf="modifie" [(ngModel)]="user.address" required>
+                </label>
+            </div>
+            <div class="col-md-4">
+                <label for="phone" class="form-inline">
+                    <h5 id='phone' style="margin-left: 5px;text-justify: auto;font-size: 18px">Phone : </h5>
+                    <h6 style="margin-left: 5px;text-justify: auto;font-size: 12px">{{user.phone}}</h6>
+                    <h6 style="margin-left: 15px;text-justify: auto;  font-weight: 900; font-size: 20px"> / </h6>
+
+
+                    <input type="number" class="form-control example-chip-list" id="username" placeholder="username"
+                        name="phone" style="margin-right:5px;" *ngIf="modifie" max="8" min="8" [(ngModel)]="user.phone"
+                        required>
+                </label>
+            </div>
+        </div>
+        <div class="row" style="padding: 20px">
+            <div class="col-md-4">
+                <label for="Email" class="form-inline">
+                    <h5 id='Email' style="margin-left: 5px;text-justify: auto;font-size: 18px">Email : </h5>
+                    <h6 style="margin-left: 5px;text-justify: auto;font-size: 12px" *ngIf="!modifie">{{user.email}}</h6>
+                    <input type="text" class="form-control example-chip-list" id="username" placeholder="username"
+                        name="time" style="margin-right:5px;" *ngIf="modifie" [(ngModel)]="user.email" required>
+                </label>
+            </div>
+            <div class="col-md-8">
+
+                <label for="Role" class="form-inline">
+                    <h5 style="margin-left: 5px;text-justify: auto;font-size: 18px">Roles : </h5>
+                    <h6 style="margin-left: 5px;text-justify: auto;font-size: 12px" class="form-inline"
+                        *ngIf="!modifie">
+                        <div *ngFor="let role of user.roles">
+                            <span *ngIf="role.roleName==='ROLE_MANAGER'" style="margin: 8px"> MANAGER</span>
+                            <span *ngIf="role.roleName==='ROLE_USER'" style="margin: 8px">USER</span>
+                            <span *ngIf="role.roleName==='ROLE_ADMIN'" style="margin: 8px">ADMIN</span>
+                        </div>
+
+                    </h6>
+                    <mat-form-field class="example-chip-list" id='Role' *ngIf="modifie && isAdmin">
+                        <mat-chip-list #chipList aria-label="role selection">
+                            <mat-chip *ngFor="let role of roles" [selectable]="selectable" [removable]="removable"
+                                (removed)="remove(role)">
+                                {{role}}
+                                <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                            </mat-chip>
+                            <input placeholder="New role..." #roleInput [formControl]="roleCtrl"
+                                [matAutocomplete]="auto" [matChipInputFor]="chipList"
+                                [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur"
+                                (matChipInputTokenEnd)="add($event)">
+                        </mat-chip-list>
+                        <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+                            <mat-option *ngFor="let role of filteredRoles | async" [value]="role">
+                                {{role}}
+                            </mat-option>
+                        </mat-autocomplete>
+                    </mat-form-field>
+                </label>
+
+            </div>
+        </div>
+        <div class="row" style="padding: 20px">
+            <div *ngIf="showMessage">
+                <div class="col-xs-12">
+                    <p class="alert alert-success">
+                        <strong>{{message}}!</strong>
+
+                    </p>
+                </div>
+            </div>
+            <div class=' ml-auto'>
+                <button class="btn btn-primary" (click)="toggle()">
+                    <span *ngIf="!modifie">Modifie profile</span>
+                    <span *ngIf="modifie">Confirm</span>
+                </button>
+                <button class="btn btn-primary" (click)="edit()">
+                    <span>Send modifications</span>
+                </button>
+                <button class="btn btn-accent" (click)="removeUser()" *ngIf="isAdmin">
+                    <span>Remove</span>
+                </button>
+            </div>
+
+        </div>
+
+
+    </mat-card-content>
+
+</mat-card>

@@ -58,12 +58,16 @@
         <div class="row" style="padding: 10px">
           <div class=' mr-auto'>
             <mat-chip style="margin:15px; background-color:  rgb(117, 2, 41)!important; color: wheat; " (click)="Update()">
-              <mat-icon>update</mat-icon>
+              <button>
+              <mat-icon >update</mat-icon>
+            </button>
             </mat-chip>
 
           </div>
         </div>
       </mat-card>
+      <app-edit-question [question]="question" *ngIf="question && !create">
+      </app-edit-question>
     </div>
 
   <br>

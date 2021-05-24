@@ -1,0 +1,80 @@
+<div class="row">
+  <div>
+    <mat-card>
+      <mat-card-header>
+        Users
+      </mat-card-header>
+      <mat-card-content class="card bm--card-equal-height">
+        <div class="row example-header">
+
+          <button mat-icon-button aria-label="Example icon button with a vertical three dot icon"
+            style="margin:15px; background-color: rgb(117, 2, 41); color: wheat; ">
+
+            <mat-icon>group_add</mat-icon>
+          </button>
+        </div>
+        <mat-table [dataSource]="dataSource" matSort class="exemple-conteneur mat-elevation-z8">
+
+          <ng-container matColumnDef="id">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Id </mat-header-cell>>
+            <mat-cell *matCellDef="let element "> {{element.id}} </mat-cell>
+          </ng-container>
+
+          <ng-container class="bord" matColumnDef="username">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Userame </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.username}} </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="roles">
+            <mat-header-cell *matHeaderCellDef> Roles </mat-header-cell>
+            <mat-cell *matCellDef="let element" (click)="selectUser(element)">
+              <div style="text-align:start">
+                <ng-container *ngFor="let role of element.roles;let i=index">
+                  <mat-cell>
+                    <span *ngIf="role.roleName==='ROLE_MANAGER'">MANAGER</span>
+                    <span *ngIf="role.roleName==='ROLE_CANDIDATE'">CANDIDATE</span>
+                    <span *ngIf="role.roleName==='ROLE_ADMIN'">ADMIN</span>
+                  </mat-cell>
+                </ng-container>
+              </div>
+
+            </mat-cell>
+
+          </ng-container>
+
+          <ng-container matColumnDef="score">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Status </mat-header-cell>
+            <mat-cell *matCellDef="let element ">
+              <mat-slide-toggle class="md-auto" [checked]="element.activated"
+                [disabled]="!(element.activated===false || !element.activated===false)"
+                (change)="changeStatus( element.id , $event )"></mat-slide-toggle>
+            </mat-cell>
+          </ng-container>
+
+          <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+          <mat-row *matRowDef="let row ; columns: displayedColumns; "></mat-row>
+        </mat-table>
+        <mat-paginator [pageSizeOptions]="[5,10, 25, 100]"></mat-paginator>
+
+      </mat-card-content>
+      <div class="row" style="padding: 10px">
+        <div class=' mr-auto'>
+        </div>
+        <button mat-icon-button aria-label="Example icon button with a vertical three dot icon"
+          style="margin:15px; background-color: rgb(117, 2, 41); color: wheat; " (click)="Update()">
+          <mat-icon>update</mat-icon>
+        </button>
+      </div>
+
+    </mat-card>
+  </div>
+  <!--<div class="col-md-6" style="height: 500 px;">
+    
+      <app-user-detail [user]="user" [isAdmin]="true" *ngIf="user && !create"></app-user-detail>
+      <app-edit-user *ngIf="!user || create"></app-edit-user> 
+  
+  </div>-->
+
+</div>
+
+<br>

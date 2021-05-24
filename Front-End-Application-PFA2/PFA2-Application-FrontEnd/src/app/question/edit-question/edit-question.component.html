@@ -1,0 +1,121 @@
+<div *ngIf="question['id']">
+  <form>
+    <div>
+      <mat-card>
+        <mat-card-header>
+          <div class="row col-md-12 form-inline">
+            <span *ngIf="!modifie"><strong>Details</strong></span>
+            <span *ngIf="modifie"><strong>Modifie</strong></span>
+            <div class=' ml-auto'>
+              <button mat-icon-button (click)="reset()">
+                <mat-icon>clear</mat-icon>
+              </button>
+            </div>
+          </div>
+        </mat-card-header>
+        <mat-card-content>
+          <mat-divider></mat-divider>
+          <div class="row" style="padding: 5px">
+            <div class="col-md-4">
+              <label for="category" class="form-inline">
+                <h5 id='category' style="margin-left: 5px;text-justify: auto;font-size: 18px">Category :
+                </h5>
+                <h5 style="margin-left: 5px;text-justify: auto;font-size: 14px" *ngIf="!modifie">
+                  <strong>{{question.category.title}}</strong>
+                </h5>
+                <mat-select *ngIf="modifie " placeholder="select category" [(ngModel)]="question.category"
+                  name="category">
+                  <mat-optgroup *ngFor="let category of categories" [label]="category.title"
+                    [disabled]="category.enable">
+                    <mat-option *ngFor="let subCategory of category.subCategories" [value]="subCategory">
+                      {{subCategory.title}}
+                    </mat-option>
+                  </mat-optgroup>
+                </mat-select>
+              </label>
+            </div>
+          </div>
+          <mat-divider></mat-divider>
+
+          <div class="row" style="padding: 5px">
+            <div class="col-md-4">
+              <label for="level" class="form-inline">
+                <h5 id='level' style="margin-left: 5px;text-justify: auto;font-size: 18px">Level :
+                </h5>
+                <h5 style="margin-left: 5px;text-justify: auto;font-size: 14px" *ngIf="!modifie">
+                  <strong>{{question.level}}</strong>
+                </h5>
+                <input type="text" class="form-control example-chip-list" id="level" placeholder="Level" name="level"
+                  style="margin-right:5px;" *ngIf="modifie " required [(ngModel)]="question.level">
+              </label>
+            </div>
+            <div class="col-md-4">
+              <label for="score" class="form-inline">
+                <h5 id='score' style="margin-left: 5px;text-justify: auto;font-size: 18px">Score :
+                </h5>
+                <h5 style="margin-left: 5px;text-justify: auto;font-size: 14px" *ngIf="!modifie">
+                  <strong>{{question.score}}</strong>
+                </h5>
+                <input type="text" class="form-control example-chip-list" id="score" placeholder="score" name="score"
+                  style="margin-right:5px;" *ngIf="modifie " required [(ngModel)]="question.score">
+              </label>
+            </div>
+            <div class="col-md-4">
+              <label for="maxTime" class="form-inline">
+                <h5 id='maxTime' style="margin-left: 5px;text-justify: auto;font-size: 18px">Max Time :
+                </h5>
+                <h5 style="margin-left: 5px;text-justify: auto;font-size: 14px" *ngIf="!modifie">
+                  <strong>{{question.maxTime}} sec</strong>
+                </h5>
+                <input type="text" class="form-control example-chip-list" id="maxTime" placeholder="maxTime"
+                  name="maxTime" style="margin-right:5px;" *ngIf="modifie " required [(ngModel)]="question.maxTime">
+              </label>
+            </div>
+          </div>
+          <mat-divider></mat-divider>
+
+          <div class="form-group">
+            <label style="margin-right:80px;" class="col-form-label" for="question">
+              <h6>Question :</h6>
+            </label>
+            <h5 style="margin-left: 5px;text-justify: auto;font-size: 16px" *ngIf="!modifie "> {{question.title}}</h5>
+            <textarea *ngIf="modifie " type="text" class="form-control" id="name" placeholder="question" name="title1"
+              required [(ngModel)]="question.title" style="margin-right:5px;" required></textarea>
+          </div>
+          <div class="form-check">
+            <div *ngFor="let proposition of question.propositions;let p=index">
+              <div class="container">
+                <label style="margin-right:5px;" class="col-form-label" [for]=proposition.id> <input
+                    class="form-check-input" [id]=proposition.id type="checkbox" name="address"
+                    (click)="cheked(proposition.id)" [checked]=proposition.isTrue />
+                  <strong>{{proposition.title}}</strong>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="row" style="padding: 20px">
+            <div>
+              <div class="col-xs-12">
+                <p class="alert alert-success">
+
+                </p>
+              </div>
+            </div>
+            <div class=' ml-auto'>
+              <button class="btn btn-primary" (click)="edit()">
+                <span>Send modifications</span>
+              </button>
+              <button class="btn btn-accent" (click)="removeQuestion(question.id)">
+                <span>Remove</span>
+              </button>
+            </div>
+
+          </div>
+
+        </mat-card-content>
+
+      </mat-card>
+    </div>
+  </form>
+</div>

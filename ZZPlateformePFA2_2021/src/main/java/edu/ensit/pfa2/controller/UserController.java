@@ -28,7 +28,7 @@ import edu.ensit.pfa2.service.UserService;
 
 @CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
 @RestController
-@RequestMapping("/api/v1/users")
+@RequestMapping("/api/public/users")
 public class UserController {
 
 		RoleName roleName;

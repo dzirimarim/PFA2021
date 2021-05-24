@@ -1,0 +1,52 @@
+.btn-primary{
+    background-color:rgb(9, 194, 185);
+     border-color: transparent;
+     box-shadow:-5px -2px 5px #000000;
+     margin-left: 10px;
+    }
+    .btn-accent{
+      background-color:rgba(233, 110, 110, 0.911);
+       border-color: transparent;
+       box-shadow:-5px -2px 5px #000000;
+       margin-left: 10px;
+      }
+    .example-chip-list {
+        width: 80%;
+        margin-left: 10px;
+      }
+      .example-full-width {
+        width: 80%;
+       
+      }
+      .mat-tab {
+        border-right: 1px solid red;
+      }
+      .mat-tab:after {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        width: 3px;
+        background: green;
+      }
+
+.mat-tab{
+  border-right: none;
+}
+::ng-deep .mat-card-header{
+  background-color:black !important;
+  color: white;
+  padding:0px !important;
+}
+
+::ng-deep .mat-card{
+  padding:0px !important;
+}
+
+::ng-deep .mat-card-content{
+  padding:0px !important;
+}
+.divstyle{
+  margin-left: 0px;
+}

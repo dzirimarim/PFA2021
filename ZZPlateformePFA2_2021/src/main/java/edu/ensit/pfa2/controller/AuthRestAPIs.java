@@ -1,6 +1,7 @@
 package edu.ensit.pfa2.controller;
 
 import java.util.Collection;
+
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
@@ -9,6 +10,7 @@ import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
+import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -102,7 +104,7 @@ public class AuthRestAPIs {
 		UserEnt user = new UserEnt(signUpRequest.getName(), signUpRequest.getUsername(), signUpRequest.getEmail(),
 				encoder.encode(signUpRequest.getPassword()));
 
-		Set<String> strRoles = signUpRequest.getRole();
+		Set<String> strRoles = signUpRequest.getRole() == null ? new HashSet<String>() : signUpRequest.getRole();
 		// we can do better => create mapper in model and create a user builder from
 		// user model
 		Function<String, UserRole> mapper = (rule -> {
@@ -121,8 +123,12 @@ public class AuthRestAPIs {
 					.orElseThrow(() -> new RuntimeException("Fail! -> Cause: User Role not find."));
 		});
 
+		if (CollectionUtils.isEmpty(strRoles)) {
+			strRoles.add("admin");
+		}
 		Set<UserRole> roles = strRoles.stream().map(mapper).collect(Collectors.toSet());
 		user.setRoles(roles);
+		user.setActivated(true); // to be deleted 
 		userRepository.save(user);
 
 		return new ResponseEntity<>(new ResponseMessage("User registered successfully!"), HttpStatus.OK);

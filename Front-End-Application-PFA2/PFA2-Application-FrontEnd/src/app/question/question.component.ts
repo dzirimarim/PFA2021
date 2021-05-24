@@ -1,9 +1,12 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
 import { Question } from '../models/question';
 import { QuestionService } from '../services/question.service';
+
 @Component({
   selector: 'app-question',
   templateUrl: './question.component.html',
@@ -19,7 +22,7 @@ export class QuestionComponent implements OnInit {
   @ViewChild(MatPaginator) paginator !: MatPaginator;
   private questions !:Array<any>;
   
-  constructor(private questionService:QuestionService) { 
+  constructor(private questionService:QuestionService , public dialog: MatDialog ,private router: Router ) { 
     this.questionService.getAll().subscribe((result: any) => {
       if (result) {
         this.questions = result
@@ -53,11 +56,6 @@ export class QuestionComponent implements OnInit {
     this.question=row;
     this.create=false;
   }
-  applyFilter(filterValue: string) {
-    filterValue = filterValue.trim();
-    filterValue = filterValue.toLowerCase(); // Datasource defaults to lowercase matches
-    this.dataSource.filter = filterValue;
-  }
   addQuestion(){
     this.create=true;
   }
@@ -86,6 +84,14 @@ export class QuestionComponent implements OnInit {
       this.pageSizeOptions = setPageSizeOptionsInput.split(',').map(str => +str);
     }
   }
+   /*openDialog(): void {
+     if (this.question && !this.create){
+    const dialogRef = this.dialog.open(EditQuestionComponent,
+      { data: true }
+    );}*/
+   /* toEdit (quest : any){
+      this.router.navigate(['qedit']);        
+    }*/
 }
 
 

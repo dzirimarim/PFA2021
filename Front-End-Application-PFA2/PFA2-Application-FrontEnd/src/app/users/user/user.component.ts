@@ -20,7 +20,7 @@ export interface DialogData {
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.scss']
 })
-export class UserComponent {
+export class UserComponent implements OnInit {
   displayedColumns: string[] = ['id', 'username', 'roles', 'score'];
   dataSource !: MatTableDataSource<any>;
   user: any;
@@ -75,15 +75,15 @@ export class UserComponent {
     this.id = row.id;
     this.username = row.username;
     //this.openDialog(this.email , this.id , this.username) ;
-    this.openDialog(row);
+    this.openDialog(row );
   }
-  openDialog(obj: any): void {
+  openDialog(obj: any ): void {
     console.log(obj);
     const dialogRef = this.dialog.open(DialogBoxComponent, {
       width: '100%',
       //minHeight: 'calc(100vh - 90px)',
       height: 'auto',
-        data: obj
+        data: obj , 
     });
 
   }

@@ -1,1 +1,244 @@
-<p>test works!</p>
+<br>
+<mat-card>
+    <mat-card-header style="background-color:  rgb(117, 2, 41)!important; color: white;
+    padding:9px !important;" >
+        Test Form 
+    </mat-card-header>
+
+    <form [formGroup]="testForm" (ngSubmit)="onSubmit(f.value)" #f="ngForm">
+        <mat-card style ="padding:9px !important;">
+        <div class="form-group">
+            <label>Category
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <mat-form-field>
+                    <mat-select placeholder="select category" formControlName="category">
+                        <mat-option *ngFor="let category of categories" [value]="category">
+                            {{category.title}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+            </label>
+            <label>Add questions
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <mat-form-field>
+                    <mat-select placeholder="select question">
+                        <mat-option *ngFor="let quest of listQuestion" [value]="quest"
+                            (click)="setExistQuestions(quest)">
+                            {{quest.title}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </label>
+        </div>
+        <div class="form-group">
+            &nbsp;&nbsp;
+            <mat-form-field>
+                <mat-label for="name">Test</mat-label>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input matInput 
+             type="text" id="name" class="form-control" placeholder="title" name="title" formControlName="title"
+                required>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </mat-form-field>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <mat-form-field>
+
+                <mat-label for="name">Description </mat-label>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input matInput  type="text" id="name" class="form-control" placeholder="description" name="title"
+                formControlName="description">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </mat-form-field>
+        </div>
+        <br>  <br>
+    </mat-card>
+        <div formArrayName="questions">
+            <div style="margin-top:5px; margin-bottom:5px;"
+                *ngFor="let question of userFormGroups.controls; let i=index">
+                <div>
+                    <mat-card class="mystyle">
+                        <mat-card-header class="form-inline" style="background-color: rgb(146, 146, 146) !important;">
+
+                            <h6 class="mr-auto" style="font-size: 15px; color: black;">Contenu de la question {{i+1}}:
+                                {{question.value.title }}
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                            </h6>
+                            <button mat-icon-button type="button" class=" ml-auto" (click)="deleteQuestion(i)">
+                                <mat-icon style="size: 27 px;">
+                                    clear</mat-icon>
+                            </button>
+
+                        </mat-card-header>
+                        <mat-card-content>
+                            <div [formGroupName]="i">
+                                <div class=" form-inline ">
+                                    <label>Category &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <mat-form-field>
+                                            <mat-select placeholder="select category" formControlName="category">
+                                                <mat-optgroup *ngFor="let category of categories"
+                                                    [label]="category.title" [disabled]="category.enable">
+                                                    <mat-option *ngFor="let subCategory of category.subCategories"
+                                                        [value]="subCategory">
+                                                        {{subCategory.title}}
+                                                    </mat-option>
+                                                </mat-optgroup>
+                                            </mat-select>
+                                        </mat-form-field>
+                                    </label>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <label>Score:
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <input matInput type="number" class="form-control-sm input-sm" id="score"
+                                            placeholder="0" name="score" formControlName="score"
+                                            style="margin-right:5px;" min=1 max=6 required>
+                                    </label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <label>level: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <input matInput type="number" class="form-control-sm input-sm" id="level"
+                                            placeholder="0" name="level" formControlName="level"
+                                            style="margin-right:5px;" min=1 max=6 required>
+                                    </label>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <label>time(Sec):
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input matInput type="number"
+                                            class="form-control-sm input-sm" id="duration" placeholder="0" name="time"
+                                            formControlName="maxTime" style="margin-right:5px;" min=5 max=90 required>
+                                    </label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                </div>
+                                <br>
+                                <div class="form-inline">
+                                    <div class="form-group">
+                                        <label style="margin-right:80px;" class="col-form-label"
+                                            for="question">question</label>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <mat-form-field>
+                                            <input matInput type="text" class="form-control" id="name"
+                                                placeholder="question" name="type" formControlName="title"
+                                                style="margin-right:5px; height: 36px ;" required>
+                                        </mat-form-field>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <button style="background-color:  rgb(117, 2, 41)!important; color: white;"
+                                            (click)="addNewProposition(question.controls.propositions)">
+                                            <mat-icon>add</mat-icon>
+                                        </button>
+
+
+
+                                    </div>
+                                </div>
+
+                                <div class="form-inline">
+                                    <div class="form-group">
+                                        <div formArrayName="propositions">
+                                            <div style="margin-top:5px; margin-bottom:5px;"
+                                                *ngFor="let lines of question.get('propositions').controls; let j=index">
+                                                <div [formGroupName]="j">
+                                                    <div class="form-check">
+                                                        <label style="margin-right:75px;" class="col-form-label"
+                                                            for="emailId">Proposition
+                                                            {{j + 1}}</label>
+                                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                       
+                                                        <mat-form-field class="example-full-width">
+                                                            <input matInput formControlName="title" class="form-control"
+                                                                style="margin-right:5px; height: 36px ;" type="text"
+                                                                placeholder="proposition" id="name" name="address" />
+                                                        </mat-form-field>
+                                                        
+                                                        <label class="col-form-label"
+                                                            style="font-size: medium; font-family: 'Courier New', Courier, monospace;"
+                                                            for="materialUncheckedDisabled-{{j}}">
+                                                            <input formControlName="isTrue" class="form-check-input"
+                                                                id="materialUncheckedDisabled-{{j}}" type="checkbox"
+                                                                name="address" style="size: 24px ;">
+                                                            &nbsp;&nbsp;&nbsp;
+                                                            isTrue &nbsp;&nbsp;</label>
+
+                                                        <button
+                                                            (click)="deleteproposition(question.controls.propositions, j)"
+                                                            style="background-color:  rgb(117, 2, 41)!important; color: white;">
+                                                            <mat-icon>clear</mat-icon>
+                                                        </button>
+
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </mat-card-content>
+                    </mat-card>
+                </div>
+            </div>
+        </div>
+      <div class="container  col-md-12" align="left">
+        <mat-chip-list aria-label="Fish selection" class="ml-auto">
+          <mat-chip mat-icon style="background-color:  rgb(117, 2, 41)!important; color: white;" 
+          (click)="addNewQuestion()">
+            <mat-icon >add</mat-icon>
+          </mat-chip>
+          <mat-chip mat-icon style="background-color:  rgb(117, 2, 41)!important; color: white;"  (click)="onClear()">
+          <div class="icon">
+            <mat-icon> clear_all</mat-icon>
+          </div>
+         
+          </mat-chip>
+        </mat-chip-list>
+      </div>
+      <mat-card class="main-div">
+        <button type="submit"style="background-color: rgb(117, 2, 41); color: white; font-family: 'Courier New', Courier, monospace ;">Submit</button>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <button type="button" class="btn btn-basic">Cancel</button>
+    </mat-card>
+    </form>
+    <br>
+</mat-card>

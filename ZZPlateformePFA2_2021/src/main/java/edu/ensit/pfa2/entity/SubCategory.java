@@ -20,7 +20,7 @@ public class SubCategory {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String Title;
+	public String Title;
 	@ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
 	private Category parentCategory;
 	private int maxLevel;

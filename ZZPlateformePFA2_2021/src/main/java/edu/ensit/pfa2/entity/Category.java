@@ -24,7 +24,7 @@ public class Category {
 	private String title;
 	@OneToMany(mappedBy = "parentCategory", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JsonIgnoreProperties("parentCategory")
-	private List<SubCategory> subCategories;
+	public List<SubCategory> subCategories;
 	public Long getId() {
 		return id;
 	}

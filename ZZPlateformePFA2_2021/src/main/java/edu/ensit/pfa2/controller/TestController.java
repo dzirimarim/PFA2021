@@ -25,7 +25,7 @@ import edu.ensit.pfa2.service.TestService;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/api/public")
 public class TestController {
 
 	@Autowired

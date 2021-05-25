@@ -37,7 +37,6 @@ export class UserEditComponent implements OnInit {
       }
     },1000)
   }
-
   pauseTimer() {
     clearInterval(this.interval);
   }
@@ -54,7 +53,6 @@ export class UserEditComponent implements OnInit {
     }
     console.log(this.user_1)
   }
-
   toggle() {
     
     this.modifie = !this.modifie;
@@ -63,8 +61,7 @@ export class UserEditComponent implements OnInit {
   ngOnInit() {
   }
   ngOnChanges(changes: SimpleChanges) {
-    this.initUser();
-    
+    this.initUser(); 
     console.log(this.user)
   }
   initUser() {
@@ -109,7 +106,6 @@ export class UserEditComponent implements OnInit {
       })
     }
   }
-
   message !: string
   showMessage=false
   succes=false
@@ -129,7 +125,6 @@ export class UserEditComponent implements OnInit {
     
     });
   }
-
   dateChange(type: string, event: MatDatepickerInputEvent<Date>) {
     if( event.value != null){
     this.user.dateOfBirth = event.value

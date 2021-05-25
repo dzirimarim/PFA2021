@@ -6,6 +6,14 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { Question } from '../models/question';
 import { QuestionService } from '../services/question.service';
+import { DialogBoxComponent } from './dialog-box/dialog-box.component';
+
+export interface DialogData {
+  quest : Question ;
+  id : any ; 
+  score : any ; 
+  username : any ;
+}
 
 @Component({
   selector: 'app-question',
@@ -15,13 +23,13 @@ import { QuestionService } from '../services/question.service';
 export class QuestionComponent implements OnInit {
   displayedColumns: string[] = ['id', 'title', 'category', 'level'];
   dataSource !:MatTableDataSource<any>;
-  question !: Question;
+  question : any;
   create:boolean=true;
   loaded !: any ;
   @ViewChild(MatSort) sort !: MatSort;
   @ViewChild(MatPaginator) paginator !: MatPaginator;
   private questions !:Array<any>;
-  
+ // data !: DialogData;
   constructor(private questionService:QuestionService , public dialog: MatDialog ,private router: Router ) { 
     this.questionService.getAll().subscribe((result: any) => {
       if (result) {
@@ -52,9 +60,27 @@ export class QuestionComponent implements OnInit {
     })
    
   }
-  selectQuestion(row: any){
+
+  selectQuestion(row: Question){
     this.question=row;
     this.create=false;
+    console.log(row)
+   // this.email = row.email;
+    //this.id = row.id;
+    //this.username = row.username;
+    this.openDialog(row);
+  }
+  data !: DialogData;
+  openDialog(obj: Question ): void {
+    console.log(obj);
+    const dialogRef = this.dialog.open(DialogBoxComponent, {
+      width: '100%',
+      //minHeight: 'calc(100vh - 90px)',
+      height: 'auto',
+      data : obj ,
+      
+    });
+console.log(obj) ;
   }
   addQuestion(){
     this.create=true;
@@ -84,14 +110,6 @@ export class QuestionComponent implements OnInit {
       this.pageSizeOptions = setPageSizeOptionsInput.split(',').map(str => +str);
     }
   }
-   /*openDialog(): void {
-     if (this.question && !this.create){
-    const dialogRef = this.dialog.open(EditQuestionComponent,
-      { data: true }
-    );}*/
-   /* toEdit (quest : any){
-      this.router.navigate(['qedit']);        
-    }*/
 }
 
 

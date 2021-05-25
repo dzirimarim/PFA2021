@@ -23,7 +23,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
-
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import {MatChipsModule} from '@angular/material/chips';
 import { QuestionComponent } from './question/question.component';
@@ -36,6 +36,7 @@ import { UserEditComponent } from './users/user-edit/user-edit.component';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MomentDateModule } from '@angular/material-moment-adapter';
+import { QuestionAddComponent } from './question/question-add/question-add.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { MomentDateModule } from '@angular/material-moment-adapter';
     UserFormComponent,
     UserComponent,
     DialogBoxComponent,
-    UserEditComponent
+    UserEditComponent,
+    QuestionAddComponent
   ],
   imports: [
     BrowserModule,
@@ -77,7 +79,7 @@ import { MomentDateModule } from '@angular/material-moment-adapter';
     MatSelectModule ,
     MatDividerModule ,
     MatAutocompleteModule,
-    MomentDateModule
+    MomentDateModule ,
   ],
   providers: [
     

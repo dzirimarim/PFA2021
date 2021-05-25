@@ -18,7 +18,7 @@ import edu.ensit.pfa2.repository.CategoryRepo;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
-@RequestMapping("/api/v1/")
+@RequestMapping("/api/public/")
 public class CategoryController {
 	@Autowired
 	private CategoryRepo catRepo ;

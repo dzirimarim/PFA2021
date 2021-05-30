@@ -1,0 +1,35 @@
+<div [ngClass]="trans ? 'primary-blue':'primary-blue'">
+  <mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <span>
+        <img src="../../../assets/logo.png" width="90" height="30" alt="" routerLink="/" />
+      </span>
+      <span class="example-spacer"></span>
+
+
+
+      <!----------------------------NAVIGATION BUTTONS---------------------------------------------->
+      <button mat-button color="primary" (click)="navigate('home')" *ngIf="currentUser">Home</button>
+      <button mat-button color="primary" (click)="navigate('')" *ngIf="currentUser">My exams</button>
+      <button mat-button [matMenuTriggerFor]="managetest" color="primary" *ngIf="currentUser">Tests
+        admin</button>
+      <mat-menu #managetest="matMenu" class="mat-toolbar">
+        <button mat-menu-item>Assign exam</button>
+        
+        <button mat-menu-item>Create Qcm</button>
+        <button mat-menu-item>Add Questions</button>
+        <button mat-menu-item>Add contest</button>
+      </mat-menu>
+
+      <button mat-button color="primary" (click)="navigate('home')" *ngIf="currentUser">Statistics</button>
+
+
+
+
+      <!----------------------------AUTHENTIFICATION BUTTONS---------------------------------------------->
+      <button mat-button color="primary" (click)="openDialog('false')" *ngIf="!currentUser">signup</button>
+      <button mat-button color="accent" (click)="openDialog('true')" *ngIf="!currentUser">signin</button>
+      <button mat-button color="accent" (click)="logout()" *ngIf="currentUser">logout</button>
+    </mat-toolbar-row>
+  </mat-toolbar>
+</div>

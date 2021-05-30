@@ -1,0 +1,12 @@
+<!--pre>
+    {{isLogin | json}}
+</pre-->
+
+
+<h1 mat-dialog-title class="card-container">
+    {{isLogin ? 'Signin' : 'Signup'}}
+</h1>
+<mat-dialog-content>
+    <app-signup (toLogin) = "onChangeRequest($event)" *ngIf="!isLogin"></app-signup>
+    <app-signin (toLogin) = "onChangeRequest($event)" *ngIf="isLogin"></app-signin>
+</mat-dialog-content>

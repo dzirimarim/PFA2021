@@ -1,0 +1,36 @@
+<div class="container">
+    <div class="row mt-5 align-items-center">
+
+        <mat-form-field appearance="outline" class="full-width-input">
+            <mat-label>Username</mat-label>
+            <input matInput placeholder="username" [formControl]="username" required>
+            <mat-icon matSuffix>person</mat-icon>
+            <mat-error *ngIf="username.hasError('required')">
+                Username is <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+
+    </div>
+    <div class="row mt-4 align-items-center">
+        <mat-form-field appearance="outline" class="full-width-input">
+            <mat-label>Enter your password</mat-label>
+            <input matInput [type]="hide ? 'password' : 'text'" [formControl]="password" required>
+            <button mat-icon-button matSuffix (click)="toggleHide()" [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+            <mat-error *ngIf="password.hasError('required')">
+                Password is <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+    </div>
+    <div class="row mt-2">
+        <div class="col mt-2">
+          Create <a (click) = "register()" routerLink>new account</a> ?
+        </div>
+        <div class="col-4">
+            <button mat-raised-button color = "primary" (click)="submit()" [disabled]="!password.valid || !username.valid"
+                class="md-auto">Signin</button>
+        </div>
+    </div>
+</div>

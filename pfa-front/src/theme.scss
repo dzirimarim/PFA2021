@@ -1,0 +1,84 @@
+@import '~@angular/material/theming';
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+
+$mat-myapp-primary: (
+    50 : #5cfcac,
+    100 : #5cfcac,
+    200 : #5cfcac,
+    300 : #5cfcac,
+    400 : #5cfcac,
+    500 : #5cfcac,
+    600 : #5cfcac,
+    700 :#5cfcac,
+    800 : #5cfcac,
+    900 : #5cfcac,
+    A100 : #5cfcac,
+    A200 : #5cfcac,
+    A400 : #5cfcac,
+    A700 : #5cfcac,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #000000,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+$mat-myapp-accent: (
+    50 : #2cf8cc,
+    100 : #2cf8cc,
+    200 : #2cf8cc,
+    300 : #2cf8cc,
+    400 : #2cf8cc,
+    500 : #2cf8cc,
+    600 : #2cf8cc,
+    700 : #2cf8cc,
+    800 : #2cf8cc,
+    900 : #2cf8cc,
+    A100 : #2cf8cc,
+    A200 : #2cf8cc,
+    A400 : #2cf8cc,
+    A700 : #2cf8cc,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #000000,
+        700 : #000000,
+        800 : #000000,
+        900 : #000000,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+
+$primary: mat-palette($mat-myapp-primary);
+$accent: mat-palette($mat-myapp-accent);
+
+$theme: mat-light-theme($primary, $accent);
+
+ 
+mat-card {
+    padding: 0px !important;
+
+    mat-card-title, mat-card-content {
+        padding: 0.5em;
+    }
+}

@@ -1,0 +1,21 @@
+<br><br><br>
+<div align='center'>
+    <img src="../../../assets/logo1.jpg" width="30%" height="70%" alt="" >
+</div>
+
+<div *ngIf="currentUser">
+    <h2 align='center'>
+        Welcom {{currentUser.username}} !!
+    </h2>
+    <h5 align='center'>
+        you are logged in our Neoxam recruitment plateforme as {{authoritie}}
+    </h5>
+</div>
+
+
+<!--div>
+    Users from secure api end point:
+    <ul>
+        <li *ngFor="let user of users">{{user.username}} </li>
+    </ul>
+</div>-->

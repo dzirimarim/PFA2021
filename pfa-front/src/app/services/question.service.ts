@@ -25,7 +25,7 @@ export class QuestionService {
     }))*/
   }
   getAll(){
-    return this.http.get(this.baseUrl+'api/questions/all');
+    return this.http.get(this.baseUrl+'api/questions');
   }
   edit(question:any){
     return this.http.post(this.baseUrl+'api/questions/edit',[question]);

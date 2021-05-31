@@ -16,12 +16,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
+import edu.ensit.pfa2.entity.algo.Contest;
 import org.hibernate.annotations.NaturalId;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
-import javassist.bytecode.Descriptor.Iterator;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -45,8 +44,15 @@ public class UserEnt {
 	private Set<UserRole> roles = new HashSet<>();
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
 	private Date dateOfBirth;
-	public UserEnt(String name, String username, String email, String password, 
-			String address, int phone, Set<UserRole> roles, Date dateOfBirth) {
+
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(name = "userContest", joinColumns = @JoinColumn(name = "userId"), inverseJoinColumns = @JoinColumn(name = "contestId"))
+	private Set<Contest> userContests = new HashSet<>();
+
+
+
+	public UserEnt(String name, String username, String email, String password,
+				   String address, int phone, Set<UserRole> roles, Date dateOfBirth) {
 		super();
 		this.name = name;
 		this.username = username;
@@ -75,7 +81,13 @@ public class UserEnt {
 			boolean isActivated, Date dateOfBirth) {
 		this(name, username, email, password, address,0, Collections.EMPTY_SET, dateOfBirth);
 	}
+	public Set<Contest> getUserContests() {
+		return userContests;
+	}
 
+	public void setUserContests(Set<Contest> userContests) {
+		this.userContests = userContests;
+	}
 	public String getName() {
 		return name;
 	}
@@ -140,10 +152,7 @@ public class UserEnt {
 		java.util.Iterator<UserRole> iter = roles.iterator();
         return iter.next().toString();
 	}
-	
-	
-	
-	
-	
+
+
 
 }

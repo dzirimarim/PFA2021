@@ -24,7 +24,7 @@ import edu.ensit.pfa2.service.QuestionService;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
-@RequestMapping("/api/public")
+@RequestMapping("/api")
 public class QuestionController {
 
 		@Autowired
@@ -37,15 +37,7 @@ public class QuestionController {
 		public List<Question> getAllQuestion(){
 			return questRepository.findAll();
 		}		
-		
-		// create question rest api
-//		@PostMapping("/questions/add")
-//		public Question createQuestion(@RequestBody Question question) {
-//			return questRepository.save(question);
-//		}
 
-		
-		
 		@RequestMapping("/questions/add")
 		public void addQuestions(@RequestBody List<Question> questions) {
 			q.saveQuestions(questions);
@@ -79,7 +71,11 @@ public class QuestionController {
 			Question updatedQuestion =   questRepository.save(quest);
 			return ResponseEntity.ok(updatedQuestion);
 		}
-		
+
+	@PostMapping("/questions/remove")
+	public void remove(@RequestBody long id) {
+		q.removeById(id);
+	}
 		// delete employee rest api
 //		@DeleteMapping("/questions/remove/{id}")
 //		public ResponseEntity<Map<String, Boolean>> deleteQuestion(@PathVariable Long id) throws RessourceNotFoundException{
@@ -91,10 +87,7 @@ public class QuestionController {
 //			response.put("deleted", Boolean.TRUE);
 //			return ResponseEntity.ok(response);
 //		}
-		@PostMapping("/questions/remove")
-		public void remove(@RequestBody long id) {
-			q.removeById(id);
-		}
+
 		
 
 	}

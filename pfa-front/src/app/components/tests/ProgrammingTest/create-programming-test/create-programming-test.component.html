@@ -1,1 +1,117 @@
-<p>create-programming-test works!</p>
+<br><br><br>
+<div class="container">
+    <mat-card *ngIf="fg">
+        <form [formGroup]="fg" (ngSubmit)="onSubmit()" #f="ngForm" novalidate>
+            <mat-card-header>
+                Create problem
+                <div class="space"></div>
+                <div class="ml-auto">
+                    <input type="submit" value="Submit" class="btn" *ngIf="problem" [disabled]="!problem">
+                </div>
+            </mat-card-header>
+            <mat-card-content>
+                <!--  <label for="Language" *ngIf="languages">
+                    <mat-form-field>
+                        <mat-label></mat-label>
+                        <mat-select formControlName="contest">
+                            <mat-option>None</mat-option>
+                            <mat-option *ngFor="let contest of contests" [value]="contest.code">{{language.code}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </label> -->
+                <label for="Contest" *ngIf="contests">
+                    <mat-form-field>
+                        <mat-label>Contest</mat-label>
+                        <mat-select formControlName="contest">
+                            <mat-option>None</mat-option>
+                            <mat-option *ngFor="let contest of contests" [value]="contest.id">{{contest.code}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </label>
+                <div class="row form_inline">
+                    <div class="col">
+                        <mat-form-field appearance="outline" class="full-width-input">
+                            <mat-label>problem code (unique)</mat-label>
+                            <input matInput formControlName="code" required>
+
+                            <mat-error *ngIf="fg.controls.code.hasError('required')">
+                                problem code is <strong>required</strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="col">
+
+                        <mat-form-field appearance="outline" class="full-width-input">
+                            <mat-label>problem name</mat-label>
+                            <input matInput formControlName="name" required>
+
+                            <mat-error *ngIf="fg.controls.name.hasError('required')">
+                                problem name is <strong>required</strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="col">
+
+                        <mat-form-field appearance="outline" class="full-width-input">
+                            <mat-label>contest discription</mat-label>
+                            <input matInput formControlName="discription" required>
+
+                            <mat-error *ngIf="fg.controls.discription.hasError('required')">
+                                contest discription is <strong>required</strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="col">
+                        <mat-form-field appearance="outline" class="full-width-input">
+                            <mat-label>contest code</mat-label>
+                            <input matInput type="number" formControlName="level" required>
+
+                            <mat-error *ngIf="fg.controls.code.hasError('required')">
+                                level is <strong>required</strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+               
+                <!--  <label for="Problem" *ngIf="problems">
+                    <mat-form-field>
+                        <mat-label>Problem</mat-label>
+                        <mat-select formControlName="problem">
+                            <mat-option>None</mat-option>
+                            <mat-option *ngFor="let problem of problems" [value]="problem.id">{{problem.name}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </label> -->
+                <span class="upload-btn-wrapper">
+                    <button class="btn" *ngIf="!problem">Upload problem file (pdf)</button>
+                    <button class="btn" *ngIf="problem">{{problem.name}}</button>
+                    <input type="file" name="myfile" id="file" (change)="handleFileProblem($event)" />
+                </span>
+                <span class="upload-btn-wrapper">
+                    <button class="btn" *ngIf="!input">Upload input file (text)</button>
+                    <button class="btn" *ngIf="input">{{input.name}}</button>
+                    <input type="file" name="myfile" id="file" (change)="handleFileInput($event)" />
+                </span>
+                <span class="upload-btn-wrapper">
+                    <button class="btn" *ngIf="!output">Upload output file (text)</button>
+                    <button class="btn" *ngIf="output">{{output.name}}</button>
+                    <input type="file" name="myfile" id="file" (change)="handleFileOutput($event)" />
+                </span>
+                <br><br><br>
+                <!-- <div class="row">
+                    <button class="btn ml-auto" style="margin-bottom: 10px;">Submit</button>
+                </div> -->
+            </mat-card-content>
+        </form>
+        <!--pre *ngIf="fileToUpload">{{fileToUpload.name | json}}</pre--->
+    </mat-card>
+    <!--*ngFor="let state of states" [value]="state"-->
+    <pre *ngIf='fg'>{{ fg.value | json }}</pre>
+    <pre *ngIf='input'>{{ input.name| json }}</pre>
+    <pre *ngIf='output'>{{ output.name | json }}</pre>
+
+</div>

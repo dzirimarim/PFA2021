@@ -1,0 +1,58 @@
+<br><br><br>
+<div class="container">
+
+    <mat-card *ngIf="fg">
+        <form [formGroup]="fg" (ngSubmit)="onSubmit()" #f="ngForm" novalidate>
+            <mat-card-header>
+                Submit Solution
+                <div class="ml-auto">
+                    <input type="submit" value="Submit" class="btn" *ngIf="fg.controls.code.value"
+                        [disabled]="!fg.invalid">
+                </div>
+            </mat-card-header>
+            <mat-card-content>
+                <!-- <label for="Language" *ngIf="languages">
+                    <mat-form-field>
+                        <mat-label>Language</mat-label>
+                        <mat-select formControlName="language">
+                            <mat-option>None</mat-option>
+                            <mat-option *ngFor="let language of languages" [value]="language.code">{{language.name}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </label> -->
+                <label for="Contest" *ngIf="contests">
+                    <mat-form-field>
+                        <mat-label>Contest</mat-label>
+                        <mat-select formControlName="cid">
+                            <mat-option>None</mat-option>
+                            <mat-option *ngFor="let contest of contests" [value]="contest.code">{{contest.code}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </label>
+                <label for="Problem" *ngIf="problems">
+                    <mat-form-field>
+                        <mat-label>Problem</mat-label>
+                        <mat-select formControlName="problem">
+                            <mat-option>None</mat-option>
+                            <mat-option *ngFor="let problem of problems" [value]="problem.id">{{problem.name}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </label>
+                <span class="upload-btn-wrapper">
+                    <button class="btn" *ngIf="!fg.controls.code.value">Upload file</button>
+                    <button class="btn" *ngIf="fg.controls.code.value">{{fg.controls.code.value.name}}</button>
+                    <input type="file" name="myfile" id="file" (change)="handleFileInput($event)" />
+                </span>
+                <div class="row">
+                    <button class="btn ml-auto" style="margin-bottom: 10px;">Submit</button>
+                </div>
+            </mat-card-content>
+        </form>
+        <!--pre *ngIf="fileToUpload">{{fileToUpload.name | json}}</pre--->
+    </mat-card>
+    <!--*ngFor="let state of states" [value]="state"-->
+    <pre>{{ submissionResult | json }}</pre>
+</div>

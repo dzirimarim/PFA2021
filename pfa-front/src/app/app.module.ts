@@ -9,9 +9,9 @@ import { SignupComponent } from './components/register/signup/signup.component';
 import { UserProfileComponent } from './components/userManagement/user-profile/user-profile.component';
 import { UsersComponent } from './components/userManagement/users/users.component';
 import { EditUserComponent } from './components/userManagement/edit-user/edit-user.component';
-import { NewTestComponent } from './components/tests/ProgrammingTest/new-test/new-test.component';
+import { NewTestComponent } from './components/tests/qcm/new-test/new-test.component';
 import { CreateProgrammingTestComponent } from './components/tests/ProgrammingTest/create-programming-test/create-programming-test.component';
-import { TestsComponent } from './components/tests/ProgrammingTest/tests/tests.component';
+import { TestsComponent } from './components/tests/qcm/tests/tests.component';
 import { EditProgrammingTestComponent } from './components/tests/ProgrammingTest/edit-programming-test/edit-programming-test.component';
 import { CreateQuestionComponent } from './components/tests/qcm/create-question/create-question.component';
 import { EditQuestionComponent } from './components/tests/qcm/edit-question/edit-question.component';
@@ -55,6 +55,7 @@ import { HomeComponent } from './components/home/home.component';
 import { JwtInterceptor } from './helpers/jwt.interceptor';
 import { ErrorInterceptor } from './helpers/error.interceptor';
 import { QcmComponent } from './components/exams/qcm/qcm.component';
+import { SubmitComponent } from './components/tests/ProgrammingTest/submit/submit.component';
 
 @NgModule({
   declarations: [
@@ -77,7 +78,8 @@ import { QcmComponent } from './components/exams/qcm/qcm.component';
     WelcomeComponent,
     AuthComponent,
     HomeComponent,
-    QcmComponent
+    QcmComponent,
+    SubmitComponent
 
   ],
 
@@ -104,7 +106,7 @@ import { QcmComponent } from './components/exams/qcm/qcm.component';
     MatSelectModule,
     MatDividerModule,
     MatAutocompleteModule,
-    MatMenuModule
+    MatMenuModule,
 
   ],
 

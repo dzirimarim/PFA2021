@@ -18,25 +18,25 @@ import edu.ensit.pfa2.repository.CategoryRepo;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
-@RequestMapping("/api/public/")
+@RequestMapping("/api/categories")
 public class CategoryController {
 	@Autowired
 	private CategoryRepo catRepo ;
 	
 	// get all employees
-	@GetMapping("/categories")
+	@GetMapping("")
 	public List<Category> getAllCategory(){
 		return catRepo.findAll();
 	}		
 	
 	// create Category rest api
-	@PostMapping("/categories")
+	@PostMapping("")
 	public Category createCategory(@RequestBody Category Category) {
 		return catRepo.save(Category);
 	}
 	
 	// get Category by id rest api
-	@GetMapping("/categories/{id}")
+	@GetMapping("/{id}")
 	public ResponseEntity<Category> getCategoryById(@PathVariable Long id) throws RessourceNotFoundException {
     Category quest = catRepo.findById(id)
     		 .orElseThrow(() -> new RessourceNotFoundException("Category not exist with id :" + id));
